@@ -21,7 +21,7 @@ int main()
             
         }
     }
-    string result=(flag==0)? "no is nor prime":"no is prime";
+    str result=(flag==0)? "no is nor prime":"no is prime";
     cout<<result;
     return 0;
 }

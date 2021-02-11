@@ -1,0 +1,1 @@
+{"name":"Local: SelectionSort","url":"d:\\Competitive programming\\.cph\\Sorting\\SelectionSort.cpp","tests":[{"id":1612982912012,"input":"10\n100 99 88 77 6 5 4 -1 -5 -9","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive programming\\.cph\\Sorting\\SelectionSort.cpp","group":"local","local":true}

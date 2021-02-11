@@ -4,7 +4,9 @@ using namespace std;
  
 int main()
 {
-    int j = 10E6;
-    cout<<j;
+    cout<<"Enter the no";
+    int n ;
+    cin>>n;
+    cout<<n*(n-1)/2;
     return 0;
 }
