@@ -1,0 +1,1 @@
+{"name":"Local: TransposeOFMatrix","url":"d:\\Competitive programming\\.cph\\ArrayChallenges\\TransposeOFMatrix.cpp","tests":[{"id":1613156338147,"input":"3\n3\n0 1 2\n3 4 5\n6 7 8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive programming\\.cph\\ArrayChallenges\\TransposeOFMatrix.cpp","group":"local","local":true}
