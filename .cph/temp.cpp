@@ -56,8 +56,7 @@ int main()
 {
     string s;
     cin>>s;
-    sort(s.begin(),s.end(),greater<int>());
-    // int jadoo = stoi(s);
-    cout<<s;
+  
+    cout<<s[0];
  return 0;
 }
