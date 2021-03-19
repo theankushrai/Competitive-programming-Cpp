@@ -17,7 +17,6 @@ void dnf_sort(int a[],int n){
             swp(a,mid,low);
             low++;
             mid++;
-
         }
         else if(a[mid]==2){
             swp(a,mid,high);

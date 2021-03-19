@@ -1,14 +1,17 @@
-#include<vector> 
+#include<iterator>
+#include<map> 
 #include<iostream>
-#include<algorithm>
 using namespace std;
  
 int main()
 {
-    pair<int,char> p =make_pair(3,'A');
-
-    cout<<p.first<<" "<<p.second<<endl;
-
-
+    map<int,int> m;
+    m.insert(pair<int,int>(1,1));
+    m.insert(pair<int,int>(2,1));
+    m.insert(pair<int,int>(23,1));
+    map<int,int>::iterator it;
+    for(it=m.begin();it!=m.end();++it){
+        cout<<it->first<<" "<<it->second<<endl;
+    }
     return 0;
 }
