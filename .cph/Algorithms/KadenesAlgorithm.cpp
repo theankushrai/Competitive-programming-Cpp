@@ -38,8 +38,5 @@ int main()
         finalmax=max(finalmax,currentmax);
     }
     cout<<finalmax;
-    
-    
-    
     return 0;
 }
