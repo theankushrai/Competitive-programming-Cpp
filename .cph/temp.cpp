@@ -1,28 +1,29 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
-struct node
+long int gcd(long int a, long int b)
 {
-    int data;
-    struct node* left;
-    struct node* right;
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+     
+}
 
-    node(int val){
-        data=val;
-        left=nullptr;
-        right=nullptr;
+long int solution(long int a,long int b){
+    long int count=0;
+    for (long int i = 2; i <= gcd(a,b); i++)
+    {
+        if(((a%i)==0)&&((b%i)==0)) count++;
     }
-};
-
-
-int main()
+    return count+1;
+    
+}
+int  main()
 {
-    struct node* root=new node(1);   
-    root->left->data=2;
-    root->right->data=3;
-    root->left->left->data=4;
-    root->left->right->data=5;
-    root->right->left->data=6;
-    root->right->right->data=7;
+    long int a,b;
+    cin>>a>>b;
+    cout<<solution(a,b);
     return 0;
+    
 }

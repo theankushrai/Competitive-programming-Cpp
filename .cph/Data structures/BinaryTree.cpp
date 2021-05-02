@@ -58,6 +58,33 @@ void levelorder(struct node* root){
             }
         }
 }
+void lEVELOrderTraversal(struct node* root){
+    if(root==nullptr) return;
+    queue<Node*> q;
+    q.push(root);
+    q.push(nullptr);
+
+    while(!q.empty()){
+        int n =q.size();
+        for (int i = 0; i < n; i++)
+        {
+            Node* temp=q.front();
+            q.pop();
+
+            if(temp!=nullptr){
+                cout<<temp->data<<" ";
+                if(temp->left)q.push(temp->left);
+                if(temp->right)q.push(temp->right);
+            }
+            else if(q.empty()==false){
+                q.push(nullptr);
+                cout<<endl;
+            }
+            
+        }
+        
+    }
+}
 int main()
 {
     struct node* root=new node(1);   
