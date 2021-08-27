@@ -18,7 +18,9 @@ int binary_search(int array[], int size, int key){
 int main()
 {
     int size; int key; int array[size];
+    cout<<"enter size"<<endl;
     cin>>size;
+    cout<<"Enter key";
     cin>>key;
 
     for (int i = 0; i < size; i++)

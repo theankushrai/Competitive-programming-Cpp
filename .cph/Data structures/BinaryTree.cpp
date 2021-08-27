@@ -1,4 +1,6 @@
+#include<algorithm>
 #include<iostream>
+#include<stack>
 #include<queue>
 using namespace std;
 
@@ -58,33 +60,76 @@ void levelorder(struct node* root){
             }
         }
 }
-void lEVELOrderTraversal(struct node* root){
+// void lEVELOrderTraversal(struct node* root){
+//     if(root==nullptr) return;
+//     queue<Node*> q;
+//     q.push(root);
+//     q.push(nullptr);
+
+//     while(!q.empty()){
+//         int n =q.size();
+//         for (int i = 0; i < n; i++)
+//         {
+//             Node* temp=q.front();
+//             q.pop();
+
+//             if(temp!=nullptr){
+//                 cout<<temp->data<<" ";
+//                 if(temp->left)q.push(temp->left);
+//                 if(temp->right)q.push(temp->right);
+//             }
+//             else if(q.empty()==false){
+//                 q.push(nullptr);
+//                 cout<<endl;
+//             }
+            
+//         }
+        
+//     }
+// }
+void reverseQueue(queue<node*>& Queue)
+{
+    stack<node*> Stack;
+    while (!Queue.empty()) {
+        Stack.push(Queue.front());
+        Queue.pop();
+    }
+    while (!Stack.empty()) {
+        Queue.push(Stack.top());
+        Stack.pop();
+    }
+}
+void zigzagTraversal(node* root){
     if(root==nullptr) return;
-    queue<Node*> q;
+    queue<node*> q;
     q.push(root);
     q.push(nullptr);
-
+    bool leftoright=true;
     while(!q.empty()){
-        int n =q.size();
-        for (int i = 0; i < n; i++)
-        {
-            Node* temp=q.front();
-            q.pop();
+        node* temp=q.front();
+        q.pop();
+        if(temp){
+            cout<<temp->data<<" ";
 
-            if(temp!=nullptr){
-                cout<<temp->data<<" ";
-                if(temp->left)q.push(temp->left);
-                if(temp->right)q.push(temp->right);
+            if(leftoright){
+                if(temp->left )q.push(temp->left);
+                if(temp->right) q.push(temp->right);
             }
-            else if(q.empty()==false){
-                q.push(nullptr);
-                cout<<endl;
+            else{
+                if(temp->right) q.push(temp->right);
+                if(temp->left )q.push(temp->left);
             }
-            
+        }
+        else if(!q.empty()){
+            reverseQueue(q);         
+            q.push(nullptr);  
+            leftoright= leftoright? false:true;
         }
         
     }
+    
 }
+
 int main()
 {
     struct node* root=new node(1);   
@@ -94,12 +139,8 @@ int main()
     root->left->right=new node(5);
     root->right->left=new node(6);
     root->right->right=new node(7);
-    preorder(root);
-    cout<<endl;
-    midorder(root);
-    cout<<endl;
-    postorder(root);
-    cout<<endl;
-    levelorder(root);
+    
+    zigzagTraversal(root);
+
     return 0;
 }

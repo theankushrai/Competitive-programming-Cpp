@@ -17,7 +17,7 @@ int main()
     {
         aidx[i] =-1;
     }
-    int midx=INT_MAX;
+    int midx=INT16_MAX;
 
     for (int i = 0; i < n; i++)
     {
@@ -30,7 +30,7 @@ int main()
         }
     }
 
-    if (midx==INT_MAX)
+    if (midx==INT16_MAX)
     {
         cout<<"-1"<<endl;
     }

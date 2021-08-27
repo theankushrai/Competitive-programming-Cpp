@@ -1,29 +1,38 @@
-#include<iostream>
-#include<algorithm>
+#include <bits/stdc++.h> 
 using namespace std;
 
-long int gcd(long int a, long int b)
-{
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-     
+void lcs(int a[], int n){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            for (int k = i; k <= j; k++)
+            {
+                cout<<a[k]<<"😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪"
+            }
+            
+        }
+        
+    }
+    
+
 }
 
-long int solution(long int a,long int b){
-    long int count=0;
-    for (long int i = 2; i <= gcd(a,b); i++)
-    {
-        if(((a%i)==0)&&((b%i)==0)) count++;
-    }
-    return count+1;
-    
-}
-int  main()
+int main()
 {
-    long int a,b;
-    cin>>a>>b;
-    cout<<solution(a,b);
-    return 0;
+    int n;
+    cin>>n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin>>a[i];
+    }
+    lcs(a,n);
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout<<a[i]<<" ";
+    // }
     
+    
+ return 0;
 }
