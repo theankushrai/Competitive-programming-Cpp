@@ -1,38 +1,39 @@
-#include <bits/stdc++.h> 
+#include "bits/stdc++.h"
 using namespace std;
 
-void lcs(int a[], int n){
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i; j < n; j++)
-        {
-            for (int k = i; k <= j; k++)
-            {
-                cout<<a[k]<<"😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪😡😡🔪🔪"
-            }
-            
-        }
-        
+void solve(vector<int> nums, vector<vector<int>> &ans, int idx) {
+    if (idx == nums.size()) {
+        cout<<nums<<endl;
+        return ;
     }
-    
-
+    for (int i = idx; i < nums.size(); i++) {
+        if(i != idx and nums[i]==nums[idx])
+            continue;
+        swap(nums[i], nums[idx]);
+        solve(nums, ans, idx + 1);
+        
+}
 }
 
-int main()
-{
+vector<vector<int>> permute(vector<int> nums) {
+    vector<vector<int>> ans;
+    sort(nums.begin(), nums.end());
+    solve(nums,ans,0);
+    return ans;
+}
+int main(){
     int n;
     cin>>n;
-    int a[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin>>a[i];
+    vector<int> a(n);
+    for(auto &it: a){
+        cin>>it;
     }
-    lcs(a,n);
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cout<<a[i]<<" ";
-    // }
-    
-    
- return 0;
+    vector<vector<int>> ans=permute(a);
+    for(auto i:ans){
+        for(auto j: ){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
 }

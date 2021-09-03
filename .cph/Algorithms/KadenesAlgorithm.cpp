@@ -29,14 +29,15 @@ int main()
         
     // }
     // cout<<currentSum;
-     int currentmax=a[0];
-    int finalmax=a[0];
+       int currentmax=0;
+    int finalmax=INT32_MIN;
    
     for (int i = 0; i < n; i++)
     {
-        currentmax=max(a[i],currentmax+a[i]);
+        currentmax+=a[i];
         finalmax=max(finalmax,currentmax);
+                if(currentmax<0)currentmax=0;
+
     }
     cout<<finalmax;
-    return 0;
 }
