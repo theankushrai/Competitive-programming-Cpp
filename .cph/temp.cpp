@@ -1,39 +1,36 @@
-#include "bits/stdc++.h"
-using namespace std;
-
-void solve(vector<int> nums, vector<vector<int>> &ans, int idx) {
-    if (idx == nums.size()) {
-        cout<<nums<<endl;
-        return ;
-    }
-    for (int i = idx; i < nums.size(); i++) {
-        if(i != idx and nums[i]==nums[idx])
-            continue;
-        swap(nums[i], nums[idx]);
-        solve(nums, ans, idx + 1);
-        
-}
-}
-
-vector<vector<int>> permute(vector<int> nums) {
-    vector<vector<int>> ans;
-    sort(nums.begin(), nums.end());
-    solve(nums,ans,0);
-    return ans;
-}
-int main(){
-    int n;
-    cin>>n;
-    vector<int> a(n);
-    for(auto &it: a){
-        cin>>it;
-    }
-    vector<vector<int>> ans=permute(a);
-    for(auto i:ans){
-        for(auto j: ){
-            cout<<j<<" ";
+void rightrotate(int a[],int i,int j){
+        int temp=a[j];
+        for(int k=j;k>i;k--){
+            a[k]=a[k-1];
         }
-        cout<<endl;
+        a[i]=temp;
     }
-    return 0;
+    void arranged(int a[],int n)
+    {
+        
+        int i;//i is the index in which first inconsistency is to be found
+        for(int i =0;i<n;i++){
+            if(i%2==0&&a[i]<0){
+                for(int j=i+1;j<n;j++){
+                    if(a[j]>=0)rightrotate(a,i,j);
+                }
+            }
+            else if(i%2==1&&a[i]>=0){
+                for(int j =i+1;j<n;j++){
+                    if(a[j]<0)rightrotate(a,i,j);
+                }
+            }
+        }
+    }
+
+int main()
+{
+    int a[]={-1, 2, -3, 4, -5, 6};
+    arranged(a,6);
+    for (int i = 0; i < 6; i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    
+ return 0;
 }
