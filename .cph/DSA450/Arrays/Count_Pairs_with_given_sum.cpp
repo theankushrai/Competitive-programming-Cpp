@@ -34,3 +34,15 @@ Each 1 will produce sum 2 with any 1.
         return count;
     }
 //2. using count array or hashmap
+int getPairsCount(int arr[], int n, int k) {
+        // code here
+        int count=0;
+        map<int,int> m;
+        for(int i =0;i<n;i++){
+            if(m.find(k-arr[i])!=m.end()){
+                count+=m[k-arr[i]];
+            }
+            m[arr[i]]++;
+        }
+        return count;
+    }
