@@ -59,3 +59,22 @@ return false;
         }
         return false;
     }
+//4. using binary search log(n+m)
+
+ bool searchMatrix(vector<vector<int>>& a, int k) {
+        if(a.size()==1&&a[0].size()==1)return a[0][0]==k;
+        
+        int n=a.size();
+        int m=a[0].size();
+        int l =0;
+        int r=(n*m)-1;
+        
+        while(l<=r){
+            int mid=(l+r)/2;
+            
+            if(a[mid/m][mid%m]==k) return true;
+            else if(k<a[mid/m][mid%m]) r=mid-1;
+            else l=mid+1;
+        }
+        return false;
+    }

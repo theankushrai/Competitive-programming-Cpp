@@ -15,6 +15,8 @@ Input: nums = [2,2,1,1,1,2,2]
 Output: 2
 */
 
+//0. check the count of each element using for loop time cimplexity n2
+
 // 1. count each element using hash table time complexity 2n space complexity n
 
 //2. moores voting algorithm time n space 1

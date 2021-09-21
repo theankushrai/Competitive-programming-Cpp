@@ -1,43 +1,39 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-#pragma GCC optimize("unroll-loops")
-#include <bits/stdc++.h>
-#include <complex>
-#include <queue>
-#include <set>
-#include <unordered_set>
-#include <list>
-#include <chrono>
-#include <random>
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <map>
-#include <unordered_map>
-#include <stack>
-#include <iomanip>
-#include <iostream>
-#include <unordered_map>
+#include <bits/stdc++.h> 
+#include<string>
 using namespace std;
-
-void printduplicates(string s)
-{
-    unordered_map<char, int> m;
-    for (int i = 0; i < s.length(); i++)
-    {
-        m[s[i]]++;
+ 
+int solve(int n ,string s){
+    int count=0;
+    int l=INT_MAX;
+    for(int i =0;i<n;i++){
+        if(s[i]=='1'){
+            l=i;
+            continue;
+        }
+        
+        int r=INT_MAX;
+        for(int j =i+1;j<n;j++){
+            if(s[j]=='1') {
+                    r=j;
+                    break;
+                }
+            }
+        if(l==INT_MAX&&r==INT_MAX) return 0;
+        count+=(min(abs(l-i),abs(r-i)));
     }
-    for (auto it : m)
-    {
-        if (it.second > 1)
-            cout << it.first << endl;
-    }
+    return count;
 }
 
 int main()
 {
-    printduplicates("ankushraiisaverygoodboy");
-    return 0;
+    int t;
+    cin>>t;
+    for(int i =0;i<t;i++){
+        int n;
+        string s;
+        cin>>n>>s;
+        cout<<"case #"<<i+1<<": "<<solve(n,s)<<endl;
+
+    }
+ return 0;
 }
