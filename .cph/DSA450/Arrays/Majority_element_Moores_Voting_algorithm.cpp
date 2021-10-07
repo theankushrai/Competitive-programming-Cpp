@@ -20,20 +20,18 @@ Output: 2
 // 1. count each element using hash table time complexity 2n space complexity n
 
 //2. moores voting algorithm time n space 1
-int majorityElement(vector<int>& a) {
+ int majorityElement(vector<int>& a) {
         
-        pair<int,int> p;
-        p.first=a[0];
-        p.second=1;
+        int count=0;
+        int el=a[0];
         
-        for(int i =1;i<a.size();i++){
-            
-            if(p.second==0){
-                p.first=a[i];
-                p.second=1;
+        for(auto it: a){
+            if(count==0){
+                el=it;
+                count++;
             }
-            else if(a[i]==p.first) (p.second)++;
-            else p.second--;
+            else if(it==el)count++;
+            else count--;
         }
-        return p.first;
+        return el;
     }

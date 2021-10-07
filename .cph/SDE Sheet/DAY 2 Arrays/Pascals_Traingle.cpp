@@ -25,19 +25,51 @@ Constraints:
 time complexity n2
 */
 
-vector<vector<int>> generate(int n) {
-        
-        vector<vector<int>> a(n);
-        
-        for(int i =0;i<n;i++){
-            a[i].resize(i+1);
-            for(int j =0;j<=i;j++){
-                if(j==0||j==i)a[i][j]=1;
-                else{
-                    a[i][j]=a[i-1][j-1]+a[i-1][j];
-                }
+vector<vector<int>> generate(int n)
+{
+
+    vector<vector<int>> a(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        a[i].resize(i + 1);
+        for (int j = 0; j <= i; j++)
+        {
+            if (j == 0 || j == i)
+                a[i][j] = 1;
+            else
+            {
+                a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
             }
         }
-        return a;
     }
+    return a;
+}
 
+// 2. using combinations
+// time complexity n*m*(combinaion)
+
+int combination(int n, int r)
+{
+    double result = 1;
+    for (int i = 1; i <= r; i++)
+    {
+        result = result * (n - r + i) / i;
+    }
+    return (int)result;
+}
+vector<vector<int>> generate(int n)
+{
+
+    vector<vector<int>> a(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        a[i].resize(i + 1);
+        for (int j = 0; j <= i; j++)
+        {
+            a[i][j] = combination(i, j);
+        }
+    }
+    return a;
+}
