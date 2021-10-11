@@ -51,24 +51,11 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
-int lengthOfLongestSubstring(string s) {
-        int n=s.length();
-        unordered_map<char,int> temp;
-        int maxl=0;
-        int l=0;
-        for(int r =0;r<n;r++){
-            if(temp[s[r]]==-1) temp[s[r]]=r;
-            else{
-                l=max(temp[s[r]]+1,l);//if l is greater then s[r] then return l
-                temp[s[r]]=r;
-            }
-            maxl=max(maxl,r-l+1);
-        }
-        return maxl;
-    }
+
+void solve(){
+}
 int main()
 {
-  string s=" ";
-  cout<<"length is :"<<lengthOfLongestSubstring(s);
+ 
  return 0;
 }
