@@ -52,10 +52,21 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+void solve(int n){
+    int temp=n;
+    int result=0;
+    while(temp!=0){
+        int rem=temp%10;
+        result+=pow(rem,3);
+        temp/=10;
+    }
+    if(n==result)cout<<"Yes";
+    else cout<<"NO";
+    return;
 }
+
 int main()
 {
- 
+    solve(371);
  return 0;
 }
