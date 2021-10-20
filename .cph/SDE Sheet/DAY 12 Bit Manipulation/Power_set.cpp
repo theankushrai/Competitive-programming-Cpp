@@ -23,7 +23,7 @@ Expected Space Complexity : O(n * 2n)
 Constraints: 
 1 <= Length of string <= 16*/
 // 1.bit manipulation
-//time complexity 2^n
+//time complexity 2^n*n
 	    bool getbit(int n, int pos){
 	        return ((n&(1<<pos))!=0);
 	    }
