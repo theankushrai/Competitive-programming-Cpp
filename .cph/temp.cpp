@@ -1,72 +1,37 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-#pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h> 
-#include <complex>
-#include <queue>
-#include <set>
-#include <unordered_set>
-#include <list>
-#include <chrono>
-#include <random>
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <map>
-#include <unordered_map>
-#include <stack>
-#include <iomanip>
-#include <fstream>
- 
+#include<vector>
+#include<string>
 using namespace std;
- 
-typedef long long ll;
-typedef long double ld;
-typedef pair<int,int> p32;
-typedef pair<ll,ll> p64;
-typedef pair<double,double> pdd;
-typedef vector<ll> v64;
-typedef vector<int> v32;
-typedef vector<vector<int> > vv32;
-typedef vector<vector<ll> > vv64;
-typedef vector<vector<p64> > vvp64;
-typedef vector<p64> vp64;
-typedef vector<p32> vp32;
-ll MOD = 998244353;
-double eps = 1e-12;
-#define forn(i,e) for(ll i = 0; i < e; i++)
-#define forsn(i,s,e) for(ll i = s; i < e; i++)
-#define rforn(i,s) for(ll i = s; i >= 0; i--)
-#define rforsn(i,s,e) for(ll i = s; i >= e; i--)
-#define ln "\n"
-#define dbg(x) cout<<#x<<" = "<<x<<ln
-#define mp make_pair
-#define pb push_back
-#define fi first
-#define se second
-#define INF 2e18
-#define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
-#define all(x) (x).begin(), (x).end()
-#define sz(x) ((ll)(x).size())
- 
-
-void solve(int n){
-    int temp=n;
-    int result=0;
-    while(temp!=0){
-        int rem=temp%10;
-        result+=pow(rem,3);
-        temp/=10;
+  bool safe(int row, int col, vector<bool> is_safe){
+        for(int i  =0;i<=(row+col);i++) if(is_safe[i]==0)return false;
+        return true;
+        
     }
-    if(n==result)cout<<"Yes";
-    else cout<<"NO";
-    return;
-}
+    void NQueen(int n,int row,vector<string>& board,vector<vector<string>>& ans,vector<bool>& is_safe){
+        if(row==n){
+            ans.push_back(board);
+            return ;
+        }
+        
+        for(int col=0;col<n;col++){
+            if(safe(row,col,is_safe)){
+                board[row][col]='Q'; 
+                is_safe[row+col]=0;
+                NQueen(n,row+1,board,ans,is_safe);
+                is_safe[row+col]=1;
+                board[row][col]='.';
+            }
+        }
+    }
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> ans;
+        vector<string> board(n,string(n,'.'));
+        vector<bool> is_safe((2*n)-2,1);//true is no queen false is queen
+        NQueen(n,0,board,ans,is_safe);
+        return ans;
+    }
 
 int main()
-{
-    solve(371);
+{solveNQueens(4);
  return 0;
 }
