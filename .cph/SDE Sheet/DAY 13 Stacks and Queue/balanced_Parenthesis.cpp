@@ -32,9 +32,22 @@ Explanation:
 ([]. Here square bracket is balanced but 
 the small bracket is not balanced and 
 Hence , the output will be unbalanced.
+Your Task:
+This is a function problem. You only need to complete the function ispar() that takes a string as a parameter and returns a boolean value true if brackets are balanced else returns false. The printing is done automatically by the driver code.
+
+Expected Time Complexity: O(|x|)
+Expected Auixilliary Space: O(|x|)
+
+Constraints:
+1 ≤ |x| ≤ 32000
+
+
 */
 
-// 1. using stack time and space complexity n;
+// 1.using stack
+//time complexity n;
+//space complexity n;
+
 bool ispar(string x)
     {
         stack<char> s;

@@ -3,36 +3,21 @@
 #include<iostream>
 using namespace std;
  
-bool balancedParentesis(string s){
-    stack<char> st;
-    for (int i = 0; i < s.length(); i++)
+bool balancedParenthesis(string x)
     {
-        if(s[i]=='('||s[i]=='{'||s[i]=='['){
-            st.push(s[i]);
-        }
-        else{
-            switch (s[i])
-            {
-            case ')':
-                if(st.top()!='(') return false;
-                break;
-            
-            case ']':
-                if(st.top()!='[') return false;
-                break;
-            case '}':
-                if(st.top()!='{') return false;
-                break;
-            default:
-                cout<<"WRONG EXPRESSION"<<endl;
-                break;
+        stack<char> s;
+        for(int i =0;i<x.length();i++){
+            char c=x[i];
+            if(c=='(')s.push(')');
+            else if(c=='{')s.push('}');
+            else if(c=='[')s.push(']');
+            else{
+                if(s.empty()||s.top()!=c)return false;
+                s.pop();
             }
-            st.pop();
         }
+        return s.empty();
     }
-    return true;
-}
-
 int main()
 {
     string s ="({[([)]})";
