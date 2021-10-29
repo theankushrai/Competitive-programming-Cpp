@@ -56,6 +56,8 @@ vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
         return ans;
     }
 //2. using stack
+//time complexity 2n;
+//space complexity n
 
 vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
         stack<int> st;
