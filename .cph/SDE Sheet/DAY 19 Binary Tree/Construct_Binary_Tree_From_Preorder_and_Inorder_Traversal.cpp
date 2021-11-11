@@ -28,20 +28,16 @@ inorder is guaranteed to be the inorder traversal of the tree.*/
 //space complexity n;
 //auxillary space n;
 
-TreeNode* build(vector<int>& preorder,int ps,int pe,unordered_map<int,int> & inorder,int is,int ie){
+TreeNode* construct(vector<int> & preorder,int ps, int pe,unordered_map<int,int> &inorder,int is, int ie){
         if(ps>pe||is>ie)return nullptr;
         
         TreeNode* root=new TreeNode(preorder[ps]);
-        int inroot=inorder[root->val];
-        int elements_left=inroot-is;
+        int root_idx=inorder[root->val];
+        int nums_left=root_idx-is;
         
-        //for left subtree;
-        root->left=build(preorder,ps+1,pe,inorder,is,inroot-1);
-        //for right subtree
-        root->right=build(preorder,ps+elements_left+1,pe,inorder,inroot+1,ie);
-    
-        return root;    
-        
+        root->left=construct(preorder,ps+1,ps+nums_left,inorder,is,root_idx-1);
+        root->right=construct(preorder,ps+nums_left+1,pe,inorder,root_idx+1,ie);
+        return root;
     }
     
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inor) {
