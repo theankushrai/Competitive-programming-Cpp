@@ -45,7 +45,7 @@ vector<int> twoSum(vector<int>& a, int target) {
         return ans;
     }
 
-//2. hash talbe
+//2. hash table
 //time complexity n;
 //space complexity n;
 

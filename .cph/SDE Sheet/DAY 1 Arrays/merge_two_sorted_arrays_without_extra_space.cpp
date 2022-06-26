@@ -178,7 +178,7 @@ int main()
 */
 
 //4. place all the smaller elements in 1st array bigger in 2nd array thn sort both arrays
-//time complexity n+m+nlogn+mlongm
+//time complexity n*mlongm
 /*
 #include <bits/stdc++.h> 
 using namespace std;
@@ -197,15 +197,12 @@ int main()
         cin>>b[j];
     }
 
-        int r=n-1;
-        int l=0;
-        while(r>=0&&l<m){
-                if(a[r]>b[l])swap(a[r],b[l]);
-                l++;
-                r--;
-        }
-        sort(a,a+n);
-        sort(b,b+m);
+        for(int i =0;i<n;i++){
+	        if(b[0]<a[i]){
+	            swap(b[0],a[i]);
+	            sort(b,b+m);
+	        }
+	    }
 
    for (int i = 0; i < n; i++)
     {
@@ -243,37 +240,16 @@ int main()
         cin >> b[j];
     }
 
-    int gap = ceil((float)(m + n) / 2);//float for correct ceiling values
-    while (gap > 0)
-    {
-        int i = 0;
-        int j = gap;
-
-        while (j < m + n)
-        {
-            if (j >= n)
-            {
-                if (i >= n)
-                {
-                    if (b[i - n] > b[j - n])
-                        swap(b[i - n], b[j - n]);
-                }
-                else
-                {
-                    if (a[i] > b[j - n])
-                        swap(a[i], b[j - n]);
-                }
-            }
-            else
-            {
-                if (a[i] > a[j])
-                    swap(a[i], a[j]);
-            }
-            i++;
-            j++;
-        }
-        gap = ceil(gap / 2);
-    }
+    	int gap=ceil((float)(n+m)/2);
+	    while(gap>0){
+	        for(int i =0,j=gap;j<m+n;i++,j++){
+	            if(j<n&&a[i]>a[j])swap(a[i],a[j]);
+	            else if(i<n&&j>=n&&a[i]>b[j-n])swap(a[i],b[j-n]);
+	            else if(j>=n&&i>=n&&b[i-n]>b[j-n])swap(b[i-n],b[j-n]);
+	        }
+	        if(gap==1)break;
+	        gap=ceil((float)gap/2);
+	    }
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";

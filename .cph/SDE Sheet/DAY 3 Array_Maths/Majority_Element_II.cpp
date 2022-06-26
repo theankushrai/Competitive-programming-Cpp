@@ -43,10 +43,29 @@ vector<int> majorityElement(vector<int>& a) {
         vector<int> ans(s.begin(),s.end());
         return ans;
     }
-
-//2.using hashmap
+//2.sort and count
+//time compelxity nlogn;
+//space complexity 0;
+int majorityElement(vector<int>& nums) {
+        int n =nums.size();
+        if(n==1)return nums[0];
+        sort(nums.begin(),nums.end());
+        int count=0;
+        int curr=nums[0];
+        int limit=n/3;
+        for(int i =1;i<n;i++){
+            if(nums[i]==curr)count++;
+            else{
+                curr=nums[i];
+                count=1;
+            }
+            if(count>limit)return curr;
+        }
+        return 0;
+    }
+//3.using hashmap
 //time complexity n/ nlogn
-int majorityElement(vector<int>& a) {
+vector<int> majorityElement(vector<int>& a) {
         unordered_map<int,int> temp;
         vector<int> ans;
         int count=a.size()/3;
@@ -57,7 +76,7 @@ int majorityElement(vector<int>& a) {
         return ans;
     }
 
-//3. modified moores voting algorithm
+//4. modified moores voting algorithm
 //time complexity 0n
 vector<int> majorityElement(vector<int>& a) {
         int c1=0,c2=0;

@@ -39,7 +39,10 @@ How can we prove that at least one duplicate number must exist in nums?
 Can you solve the problem in linear runtime complexity?
 */
 
-// 1. using sort
+//1. brute force -  check for each element
+//time complexiy n2;
+
+// 2. using sort
 // time complexity nlogn;
 int findDuplicate(vector<int>& a) {
         sort(a.begin(),a.end());
@@ -48,7 +51,7 @@ int findDuplicate(vector<int>& a) {
     }
 
 
-// 2. using count hashmap/count vector
+// 3. using count hashmap/count vector
 // time complexity n;
 // space complexity n;
 
@@ -61,7 +64,7 @@ int findDuplicate(vector<int>& a) {
         return -1;
     }
 
-// 3. using graph and hare and tortoise algorithm
+// 4. using graph and hare and tortoise algorithm
 // time complexiy n;
 
  int findDuplicate(vector<int>& a) {

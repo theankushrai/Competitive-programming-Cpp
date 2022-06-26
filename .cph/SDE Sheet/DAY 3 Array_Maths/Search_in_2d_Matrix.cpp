@@ -28,27 +28,22 @@ n == matrix[i].length
 // 1.brute force
 // time complexity nm;
 
- bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        
-        for(auto i: matrix){
-            for(auto it: i){
-                if(it==target)return true;
-            }
+ bool search(vector<vector<int> > matrix, int n, int m, int x) 
+    {
+        for(auto row:matrix){
+            for(auto it:row)if(it==x)return true;
         }
         return false;
     }
 
 //2. binary search on every row 
 //time complexity n*(logm);
- bool searchMatrix(vector<vector<int>>& a, int target) {
-        int result=false;
-        int n=a.size();
-        int m =a[0].size();
-        for(int i =0;i<n;i++){
-            result=binary_search(a[i].begin(),a[i].end(),target);
-            if(result==true)break;
+ bool search(vector<vector<int> > matrix, int n, int m, int x) 
+    {
+        for(auto row:matrix){
+            if(binary_search(row.begin(),row.end(),x))return true;
         }
-        return result;
+        return false;
     }
 //3. using i j pointer
 // time complexity n+m;

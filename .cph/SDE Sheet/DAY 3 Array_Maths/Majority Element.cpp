@@ -41,8 +41,29 @@ n == nums.length
         return -1;
     }
 
-//2.using unordered map (hashmap)
-// time complexity nlogn
+//2.sort and count
+//time compelxity nlogn;
+//space complexity 0;
+int majorityElement(vector<int>& nums) {
+        int n =nums.size();
+        if(n==1)return nums[0];
+        sort(nums.begin(),nums.end());
+        int count=0;
+        int curr=nums[0];
+        int limit=n/2;
+        for(int i =1;i<n;i++){
+            if(nums[i]==curr)count++;
+            else{
+                curr=nums[i];
+                count=1;
+            }
+            if(count>limit)return curr;
+        }
+        return 0;
+    }
+
+//3.using unordered map (hashmap)
+// time complexity n
 //space complexity n;
 int majorityElement(vector<int>& a) {
         unordered_map<int,int> temp;
@@ -54,7 +75,7 @@ int majorityElement(vector<int>& a) {
         return -1;
     }
 
-//3. moores voting algorithm
+//4. moores voting algorithm
 //time complexity n;
 
  int majorityElement(vector<int>& a) {

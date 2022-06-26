@@ -22,51 +22,59 @@ intervals[i].length == 2
 */
 
 // 1. n2 algorithm
-vector<vector<int>> merge(vector<vector<int>> &a)
-{
-    vector<vector<int>> ans;
-    sort(a.begin(), a.end());
-
-    while (a.size())
-    {
-
-        ans.push_back({a.front()[0], a.front()[1]});
-        int j = 1;
-
-        while (j < a.size())
-        {
-            if (ans.back()[1] >= a[j][0])
-            {
-                ans.back()[1] = max(a[j][1], ans.back()[1]);
-                a.erase(a.begin() + j);
-            }
-            else
-                j++;
-        }
-        a.erase(a.begin());
+    bool canmerge(int a1,int b0){
+        return a1>=b0;
     }
-    return ans;
-}
+    vector<int> merge( int a0,int a1, int b1){
+        vector<int> ans;
+        ans.push_back(a0);
+        ans.push_back(max(a1,b1));
+        return ans;
+    }    
+    vector<vector<int>> merge(vector<vector<int>>& a) {
+        
+        
+        vector<vector<int>> ans;
+        sort(a.begin(),a.end());
+        
+        while(a.size()){
+            ans.push_back(a.front());
+            int j =1;
+            while(j<a.size()){
+                if(canmerge(ans.back()[1],a[j][0])){
+                    ans.back()=merge(ans.back()[0],ans.back()[1],a[j][1]);
+                    a.erase(a.begin()+j);
+                }
+                else j++;
+            }
+            a.erase(a.begin());
+        }
+        return ans;
+    }
 
 //2. n algorithm
-vector<vector<int>> merge(vector<vector<int>> &a)
-{
-    sort(a.begin(), a.end());
-
-    vector<vector<int>> ans;
-
-    for (auto it : a)
-    {
-        int s = it[0], e = it[1];
-        if (ans.size() && s <= ans.back()[1])
-        {
-            s = ans.back()[0];
-            e = max(e, ans.back()[1]);
-            ans.pop_back();
-        }
-        ans.push_back({s, e});
+    bool canmerge(int a1,int b0){
+        return a1>=b0;
     }
-    return ans;
-}
-}
-;
+    vector<int> merge( int a0,int a1, int b1){
+        vector<int> ans;
+        ans.push_back(a0);
+        ans.push_back(max(a1,b1));
+        return ans;
+    }
+    
+    vector<vector<int>> merge(vector<vector<int>>& a) {
+        
+        vector<vector<int>> ans;
+        sort(a.begin(),a.end());
+        ans.push_back(a[0]);
+        
+        for(int i =1;i<a.size();i++){
+            if(canmerge(ans.back()[1],a[i][0])){
+                ans.back()=merge(ans.back()[0],ans.back()[1],a[i][1]);
+            }
+            else ans.push_back(a[i]);
+        }
+        return ans;
+        
+    }

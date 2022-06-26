@@ -38,10 +38,11 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
 */
 
 // 1.brute force via recursion
-//time complexity nlogn*mlogm;
+//time complexity n2^(mn)
+//space complexity nm;
 int paths(int i ,int j, int n, int m){
         if(i==n||j==m)return 0;
-        if(i==n-1||j==m-1)return 1;
+        if(i==n-1&&j==m-1)return 1;
         return paths(i+1,j,n,m)+paths(i,j+1,n,m);
     }
     int uniquePaths(int m, int n) {
@@ -50,7 +51,7 @@ int paths(int i ,int j, int n, int m){
 
 //2.dynamic programming
 // time complexity n*m
-//space complexity n*m
+//space complexity n*m for stack and n*m for vector;
 int paths(int i ,int j, int n, int m,vector<vector<int>>&a){
         
         if(i==n||j==m)return 0;

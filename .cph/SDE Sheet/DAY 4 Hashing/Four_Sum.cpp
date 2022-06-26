@@ -59,49 +59,6 @@ vector<vector<int>> fourSum(vector<int>& a, int target) {
     }
 
 //3. Two pointer + 2 sum property
-//time complexity n3 = n2for loop and n for 2 sum
+//time complexity nlog n +n2+n
 
-int skipduplicates(vector<int>& a,int i){
-        while(i+1<a.size()&&a[i+1]==a[i])i++;
-        return i;
-    }
-    int skipr(vector<int>&a,int r){
-         while(r-1>=0&&a[r-1]==a[r])r--;  
-        return r;
-    }
-    vector<vector<int>> fourSum(vector<int>& a, int target) {
-        vector<vector<int>> ans;
-        int n=a.size();
-        if(n<4)return ans;
-        sort(a.begin(),a.end());
-        
-        for(int i =0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                int l=j+1,r=n-1;
-                int temp=target-a[i]-a[j];
-                //two sum
-                while(l<r){
-                    if(a[l]+a[r]==temp){
-                        ans.push_back({a[i],a[j],a[l],a[r]});
-                        l=skipduplicates(a,l);
-                        l++;
-                        r=skipr(a,r);
-                        r--;
-                    }
-                    else if(a[l]+a[r]<temp){
-                        l=skipduplicates(a,l);
-                        l++;
-                    }
-                    else{
-                        r=skipr(a,r);
-                        r--;
-                    }
-                }
-                j=skipduplicates(a,j);
-            }
-            i=skipduplicates(a,i);
-            
-        }
-        
-        return ans;
-    }
+vector<vector<int>> ans;

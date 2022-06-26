@@ -149,6 +149,26 @@ Output: Missing = 5, Repeating = 1
 //  return 0;
 // }
 
+//4. use elements as index and mark the visited places
+//time complexity n
+
+//for repeating
+        // for(int i =0;i<n;i++){
+        //     if(a[abs(a[i])-1]>0){
+        //         a[abs(a[i])-1]=-a[abs(a[i])-1];
+        //     }
+        //     else repeating=abs(a[i]);
+        // }
+        
+        // //for missing
+        // for(int i =0;i<n;i++){
+        //     if(a[i]>0){
+        //         missing=i+1;
+        //         break;
+        //     }
+        // }
+
+
 //5. equation method
 /* time complexity n
 

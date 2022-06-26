@@ -50,9 +50,12 @@ int merge(vector<int>& arr, int l , int mid, int r){
         
         //main
         int i =0,j=0;
-        for(i=0;i<n;i++){
-            while(j<m&&(a[i]>2LL*b[j]))j++;
-            count+=(j);
+        while(i<n&&j<m){
+            if(a[i]>2LL*b[j]){
+                count+=(n-i);
+                j++;
+            }
+            else i++;
         }
         
         

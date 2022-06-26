@@ -40,7 +40,7 @@ void nextPermutation(vector<int>& nums) {
     }
 
 //2. printing all permutation and finding the next permutation;
-// time complexity n2;
+// time complexity n!*n;
 
 //3, logic
 // time complexity n;
