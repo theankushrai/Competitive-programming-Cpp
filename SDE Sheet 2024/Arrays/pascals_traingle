@@ -1,0 +1,43 @@
+
+
+
+// Problem Statement: This problem has 3 variations. They are stated below:
+
+// Variation 1: Given row number r and column number c. Print the element at position (r, c) in Pascal’s triangle.
+
+// Variation 2: Given the row number n. Print the n-th row of Pascal’s triangle.
+
+// Variation 3: Given the number of rows n. Print the first n rows of Pascal’s triangle.
+
+//time complexity - O(n*n)
+//space complexity - O(1)
+
+    vector<vector<int>> generate(int n) {
+        vector<vector<int>> traingle(n);
+        
+        for(int i =0;i<n;i++){
+            traingle[i].resize(i+1);
+            for(int j =0;j<=i;j++){
+                if(j==0||j==i)traingle[i][j]=1;
+                else traingle[i][j]=traingle[i-1][j-1]+traingle[i-1][j];
+            }
+        }
+
+        return traingle;
+    }
+
+// using ncr
+//time complexity n;
+//space complxity O(1)
+
+
+int nCr(int n, int r) {
+    long long res = 1;
+
+    // calculating nCr:
+    for (int i = 0; i < r; i++) {
+        res = res * (n - i);
+        res = res / (i + 1);
+    }
+    return res;
+}

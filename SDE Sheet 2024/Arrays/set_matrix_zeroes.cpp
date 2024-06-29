@@ -1,3 +1,12 @@
+
+
+
+TAKE A SEPARATE ROW AND COLUMN ARRAY SET ITS ELEMENT AS FALSE IF ELEMENTS IN ARRAY ARE 0
+TAKE ROW AND COLUMN ARRAY INSIDE THE DAMN ARRAY.
+
+
+//-----------------------------------------------------------------------------
+
 // Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
 
 // You must do it in place.
@@ -35,31 +44,31 @@
 //time complexity O((n*m)(n+m))+O(n+m)
 //space complexity O(1)
 
-// void setZeroes(vector<vector<int>>& matrix) {
-//         int n = matrix.size();
-//         int m = matrix[0].size();
+void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
 
             //if element is zero mark all rows and columns as -1
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 if (matrix[i][j] == 0) {
-//                     for (int k = 0; k < n; k++)
-//                         if (matrix[k][j]!=0)
-//                             matrix[k][j] = -1; 
-//                     for (int k = 0; k < m; k++)
-//                         if (matrix[i][k]!=0)
-//                             matrix[i][k] = -1;
-//                 }
-//             }
-//         }
-            //convert -1 to 0
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 if (matrix[i][j] == -1)
-//                     matrix[i][j] = 0;
-//             }
-//         }
-// }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 0) {
+                    for (int k = 0; k < n; k++)
+                        if (matrix[k][j]!=0)
+                            matrix[k][j] = -1; 
+                    for (int k = 0; k < m; k++)
+                        if (matrix[i][k]!=0)
+                            matrix[i][k] = -1;
+                }
+            }
+        }
+            convert -1 to 0
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == -1)
+                    matrix[i][j] = 0;
+            }
+        }
+}
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -70,33 +79,33 @@
 
 
 
-// void setZeroes(vector<vector<int>>& matrix) {
-//         int n = matrix.size();
-//         int m = matrix[0].size();
-//
+void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
+
         //take a row and column vector
-//         vector<bool> row(n,false);
-//         vector<bool> col(m,false);
+        vector<bool> row(n,false);
+        vector<bool> col(m,false);
         
-        // if element is 0 mark row and column as 0 or true
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 if (matrix[i][j] == 0) {
-//                     col[i]=true;
-//                     row[j]=true;
-//                 }
-//             }
-//         }
+        //if element is 0 mark row and column as 0 or true
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 0) {
+                    col[i]=true;
+                    row[j]=true;
+                }
+            }
+        }
             //if row or column is true mark element as 0
-//         for (int i = 0; i < n; i++)
-//         {
-//             for (int j = 0; j < m; j++)
-//             {
-//                 if(col[i]||row[j]) matrix[i][j]=0;
-//             }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if(col[i]||row[j]) matrix[i][j]=0;
+            }
             
-//         }
-// }
+        }
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -105,52 +114,52 @@
 //space complexity O(1)
 
 
-// void setZeroes(vector<vector<int>>& matrix) {
-//         int n = matrix.size();
-//         int m = matrix[0].size();
+void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
 
             //take column and row vector inside matrix col0 to represent col 0
-//         int col0=1;
-// //      vector<bool> row(n,false); -> [something][0]
-// //      vector<bool> col(m,false); -> [0][something]
+        int col0=1;
+//      vector<bool> row(n,false); -> [something][0]
+//      vector<bool> col(m,false); -> [0][something]
 
 
-            //mark column and row vector as 0 if el is 0
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 if (matrix[i][j] == 0) {
-//                     matrix[i][0]=0;
-//                     if(j==0) col0=0; //if it is first column then mark col0 as 0
-//                     else matrix[0][j]=0; //else mark in regular column space
-//                 }
-//             }
-//         }
+           // mark column and row vector as 0 if el is 0
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0]=0;
+                    if(j==0) col0=0; //if it is first column then mark col0 as 0
+                    else matrix[0][j]=0; //else mark in regular column space
+                }
+            }
+        }
 
-            // checking for everything except row and column vector
+            //checking for everything except row and column vector
 
-//         for (int i = 1; i < n; i++)
-//         {
-//             for (int j = 1; j < m; j++)
-//             {
-//                 if(matrix[i][j]!=0) if(matrix[i][0]==0||matrix[0][j]==0)matrix[i][j]=0;
-//             }
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = 1; j < m; j++)
+            {
+                if(matrix[i][j]!=0) if(matrix[i][0]==0||matrix[0][j]==0)matrix[i][j]=0;
+            }
             
-//         }
+        }
 
-            // if first element of row is 0 then mark whole row as zero
-//         if(matrix[0][0]==0){
-//             for (int j = 0; j < m; j++)
-//             {
-//                 matrix[0][j]=0;
-//             }
-//         }
+            //if first element of row is 0 then mark whole row as zero
+        if(matrix[0][0]==0){
+            for (int j = 0; j < m; j++)
+            {
+                matrix[0][j]=0;
+            }
+        }
 
             //if first element of column is zero then mark whole column as zero
-//         if(col0==0){
-//             for (int i = 0; i < n; i++)
-//             {
-//                 matrix[i][0]=0;
-//             }            
-//         }
+        if(col0==0){
+            for (int i = 0; i < n; i++)
+            {
+                matrix[i][0]=0;
+            }            
+        }
         
-// }
+}

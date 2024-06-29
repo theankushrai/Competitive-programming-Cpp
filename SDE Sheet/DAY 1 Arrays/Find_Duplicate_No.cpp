@@ -1,3 +1,10 @@
+
+SORT AND FIND 
+MAKE A FREQUENCY ARAY
+HARE AND TORTOISE ALGO
+
+//---------------------------------------------------------------------------------------------------------
+
 /*
 Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 

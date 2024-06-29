@@ -1,3 +1,6 @@
+TAKE EVERY ELEMENT AND CHECK IF IT CAN MERGE WITH OTHER ELEMENT.  - STUPID!!
+TAKE EVERY ELEMENT AND CHECK IF IT CAN MERGE WITH NEXT AND ADD RESULTS IN RESULT ARRAY. 
+
 /*Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
  
