@@ -41,6 +41,7 @@ class Solution{
     }
 };
 // 3. by using priority queue
+//time complexity n log n 
 class Solution{
     public:
     int kthSmallest(int arr[], int l, int r, int k) {
