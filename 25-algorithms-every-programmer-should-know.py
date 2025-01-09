@@ -1,8 +1,8 @@
-Binary Search Algorithm
-Breadth First Search (BFS) Algorithm
-Depth First Search (DFS) Algorithm
-#Merge Sort Algorithm
-#Quicksort Algorithm
+# Binary Search Algorithm
+# Breadth First Search (BFS) Algorithm
+# Depth First Search (DFS) Algorithm
+# Merge Sort Algorithm
+# Quicksort Algorithm
 Kruskal’s Algorithm
 Floyd Warshall Algorithm
 Dijkstra’s Algorithm
@@ -23,5 +23,3 @@ Huffman Coding Compression Algorithm
 Quickselect Algorithm
 Boyer–Moore Majority Vote Algorithm
 Euclid’s Algorithm
-
-B_ZcsgL3JZpxMF9
