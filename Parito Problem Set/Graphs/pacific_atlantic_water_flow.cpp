@@ -51,47 +51,33 @@
 // using dfs and recursion. starting from end rows and columsn
 //time complexity 2 nm or O(nm)
 //space compleixty nm
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        ROWS,COLS = len(heights), len(heights[0])
+        pac, atl = set(), set()
 
-class Solution {
-public:
+        def dfs(r,c,prev_h,collect):
+            if r<0 or c<0 or r==ROWS or c==COLS or (r,c) in collect or heights[r][c]<prev_h:
+                return
+            collect.add((r,c))
 
-    void dfs(int r , int c , set<pair<int,int>> &visited,int &prevHeight,int row,int col,
-        vector<vector<int>>& heights){
-        if( r==row || c==col || r<0 || c<0 ||
-            visited.count({r,c}) ||
-            prevHeight>heights[r][c]){
-                return;
-            }
-        
-        visited.insert({r,c});
-        dfs(r-1,c,visited,heights[r][c],row,col,heights);
-        dfs(r,c-1,visited,heights[r][c],row,col,heights);
-        dfs(r+1,c,visited,heights[r][c],row,col,heights);
-        dfs(r,c+1,visited,heights[r][c],row,col,heights);
-    }
-    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
-        int row = heights.size();
-        int col = heights[0].size();
-        set<pair<int,int>> atlantic;
-        set<pair<int,int>> pacific;
+            dfs(r+1,c,heights[r][c],collect)
+            dfs(r-1,c,heights[r][c],collect)
+            dfs(r,c-1,heights[r][c],collect)
+            dfs(r,c+1,heights[r][c],collect)
 
-        for(int c=0;c<col;c++){
-            dfs(0,c,pacific,heights[0][c],row,col,heights);
-            dfs(row-1,c,atlantic,heights[row-1][c],row,col,heights);
-        }
-        for(int r=0;r<row;r++){
-            dfs(r,0,pacific,heights[r][0],row,col,heights);
-            dfs(r,col-1,atlantic,heights[r][col-1],row,col,heights);
-        }
+        for c in range(COLS):#all 4 edges
+            dfs(0,c,0,pac)
+            dfs(ROWS-1,c,0,atl)
 
-        vector<vector<int>> results;
-        for(int i=0;i<row;i++){
-            for(int j =0;j<col;j++){
-                if(pacific.count({i,j}) && atlantic.count({i,j})){
-                    results.push_back({i,j});
-                }
-            }
-        }
-        return results;
-    }
-};
+        for r in range(ROWS):
+            dfs(r,COLS-1,0,atl)
+            dfs(r,0,0,pac)
+
+        result=[]
+        for r in range(ROWS):
+            for c in range(COLS):
+                if (r,c) in atl and (r,c) in pac:
+                    result.append([r,c])
+
+        return result

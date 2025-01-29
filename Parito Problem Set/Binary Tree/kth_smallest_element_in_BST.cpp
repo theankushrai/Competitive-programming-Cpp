@@ -31,30 +31,17 @@
 // auxillary spac n;
 
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-
-    void findsmallest(TreeNode* root, int &k , int &ans){
-        if(!root)return;
-        findsmallest(root->left, k  , ans);
-        k--;
-        if(k==0)ans=root->val;
-        findsmallest(root->right, k ,ans);
-    }
-    int kthSmallest(TreeNode* root, int k) {
-        int ans=-1;
-        findsmallest(root,k,ans);
-        return ans;
-    }
-};
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        result= -1
+        def dfs(root):
+            nonlocal k,result
+            if root is None:
+                return
+            dfs(root.left)
+            k-=1
+            if k==0:
+                result=root.val
+            dfs(root.right)
+        dfs(root)
+        return result

@@ -36,6 +36,32 @@
 // 1 <= m, n <= 300
 // grid[i][j] is '0' or '1'.
 
+// using dfs
+//Time complexity O(mn)
+//space complexity O(mn)
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        n=len(grid)
+        m=len(grid[0])
+        # visited=[[False]*m for it in grid]
+        def dfs(r,c):
+            if r==n or r<0 or c==m or c<0 or grid[r][c]=='0' or grid[r][c]=='#': # visited[r][c]:
+                return
+            # visited[r][c]=True
+            grid[r][c]='#'
+            dfs(r-1,c)
+            dfs(r+1,c)
+            dfs(r,c+1)
+            dfs(r,c-1)
+
+        count=0
+        for r in range(n):
+            for c in range(m):
+                if grid[r][c]=='1':
+                    dfs(r,c)
+                    count+=1
+        
+        return count
 
 // 1. using queue
 //time complexity mn for traversing and mulktiplied by 4 for 4 directions = O(mn)

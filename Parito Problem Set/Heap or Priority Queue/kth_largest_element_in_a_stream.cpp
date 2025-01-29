@@ -39,33 +39,24 @@
 // space complexity (N)
 
 //2. min heap
-//time compleixty for  n-(n-k)logn   - n for generating a priority queue and k log n for deleting n-k eleements. 
-//time complexity for add =log n 
-//space compleixty (K)
+//time complexity for add n + log k 
+//space compleixty (n)
 
-// class KthLargest {
-// public:
-//     int k;
-//     priority_queue<int,vector<int>,greater<int>> pq;
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heapq.heapify(nums)
+        for _ in range(len(nums)-k):
+            heapq.heappop(nums)
+        return nums[0]
 
-//     KthLargest(int k, vector<int>& nums) {
-//         this->k=k;
-//         for(auto it :nums){
-//             pq.push(it);
-//             if(pq.size()>k)pq.pop();
-//         }
-//     }
-    
-//     int add(int val) {
-//         pq.push(val);
-//         if(pq.size()>k)pq.pop();
-//         return pq.top();
-//     }
-// };
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap=[]
+        for it in nums:
+            heapq.heappush(heap,it)
+            if len(heap)>k:
+                heapq.heappop(heap)
+        return heap[0]
 
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest* obj = new KthLargest(k, nums);
- * int param_1 = obj->add(val);
- */
 
+// using quickselect  - too big of a code

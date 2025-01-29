@@ -42,36 +42,34 @@
 //checking if there are zeroes connected to boundry
 //marking them as B.
 //time complezit O(mn)
-class Solution {
-public:
-    void dfs(int r, int c,int row, int col, vector<vector<char>>& board){
-        if(r==row || c==col || r<0 || c<0 || board[r][c]=='X' || board[r][c]=='B') return ;
-        board[r][c]='B';
-        dfs(r,c-1,row,col,board);
-        dfs(r,c+1,row,col,board);
-        dfs(r+1,c,row,col,board);
-        dfs(r-1,c,row,col,board);
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        
+        n=len(board)
+        m=len(board[0])
 
-    }
-    void solve(vector<vector<char>>& board) {
-        int row = board.size();
-        int col = board[0].size();
+        def dfs(r,c):
+            if r<0 or c<0 or r==n or c==m or board[r][c]!='O':
+                return
+            board[r][c]='M' #marked
+            dfs(r+1,c)
+            dfs(r-1,c)
+            dfs(r,c+1)
+            dfs(r,c-1)
+        
+        for i in range(n):
+            for j in range(m):
+                if i in [0,n-1] or j in [0,m-1]:
+                    dfs(i,j)
+        
+        for i in range(n):
+            for j in range(m):
+                if board[i][j]=='O':
+                    board[i][j]='X'
+                elif board[i][j]=='M':
+                    board[i][j]='O'
 
-        for(int c=0;c<col;c++){
-            dfs(0,c,row, col, board);
-            dfs(row-1,c,row, col, board);
-        }
-        for(int r=0;r<row;r++){
-            dfs(r,0,row, col, board);
-            dfs(r,col-1,row, col, board);
-        }
 
-        for(int i=0;i<row;i++){
-            for(int j =0;j<col;j++){
-                if(board[i][j]=='B') board[i][j]='O';
-                else if(board[i][j]=='O')board[i][j]='X';
-                
-            }
-        }
-    }
-};
+
+
+            

@@ -27,25 +27,11 @@
 // time complexity O(n)
 // space complexity O(1) auxillary space O(n)
 
-class Solution {
-public:
-    void swap(TreeNode* &root){
-        TreeNode* temp=new TreeNode(root->val,root->left,root->right);
-        root->left=root->right;
-        root->right=temp->left;
-    }
-
-    void invert(TreeNode* &root){
-        if(!root)return;
-        swap(root);
-        invert(root->left);
-        invert(root->right);
-        
-    }
-
-    TreeNode* invertTree(TreeNode* root) {
-        if(!root)return root;
-        invert(root);
-        return root;
-    }
-};
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root==None:
+            return
+        root.left,root.right=root.right,root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
