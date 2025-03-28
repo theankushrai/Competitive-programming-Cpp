@@ -57,36 +57,52 @@
 # 0 <= si, ti <= n - 1
 # si != ti
 
+#time complexity: O(n+q) where n is the number of nodes and q is the number of queries
+#space complexity: O(n+q) where n is the number of nodes and q is the number of queries
+
+class UnionFind:
+    def __init__(self,n):#number of nodes
+        self.parent=list(range(n)) #every child will be its own parent
+        self.size=[1]*n
+    
+    def find(self,x):
+        if self.parent[x]!=x:
+            self.parent[x]=self.find(self.parent[x])
+        return self.parent[x]
+            
+    def union(self,a,b):
+        a,b = self.find(a) , self.find(b)
+        if a != b:
+            if self.size[a]<self.size[b]:
+                self.parent[a]=b
+                self.size[b]+=self.size[a]
+            else:
+                self.parent[b]=a
+                self.size[a]+=self.size[b]
 
 
 class Solution:
     def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) -> List[int]:
-        parent = list(range(n))
+        uf=UnionFind(n)
+        #build components
+        for u,v,w in edges:
+            uf.union(u,v)        
         
-        min_path_cost = [-1] * n
-        
-        def find_root(node: int) -> int:
-            if parent[node] != node:
-                parent[node] = find_root(parent[node])
-            return parent[node]
-        
-        for source, target, weight in edges:
-            source_root = find_root(source)
-            target_root = find_root(target)
-            
-            min_path_cost[target_root] &= weight
-            
-            if source_root != target_root:
-                min_path_cost[target_root] &= min_path_cost[source_root]
-                parent[source_root] = target_root
-        
-        result = []
-        for start, end in query:
-            if start == end:
-                result.append(0)
-            elif find_root(start) != find_root(end):
-                result.append(-1)
+        #find cost of each component
+        component_cost={}
+        for u,v,w in edges:
+            root=uf.find(u)
+            if root not in component_cost:
+                component_cost[root]=w
             else:
-                result.append(min_path_cost[find_root(start)])
-                
-        return result
+                component_cost[root]&=w
+        #queries
+        res=[]
+        for src,des in query:
+            a,b = uf.find(src) , uf.find(des)
+            if a!=b: #They are not connected
+                res.append(-1)
+            else:
+                res.append(component_cost[a])
+        
+        return res
