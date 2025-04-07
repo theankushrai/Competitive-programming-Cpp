@@ -38,7 +38,7 @@ This repo reflects my **job-readiness** as a developer with:
 ## 🔗 Connect with Me
 
 Want to connect, collaborate, or discuss something cool?  
-📬 Check out my **[Linktree]([https://linktr.ee/your-link](https://linktr.ee/theankushrai))** to view my profiles across:
+👉 **[Click here to visit my Linktree](https://linktr.ee/theankushrai)**  
 
 - **LeetCode**  
 - **GeeksforGeeks**  
